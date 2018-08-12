@@ -4,7 +4,7 @@ import BookShelf from './BookShelf'
 
 class AllBooks extends Component {
     render() {
-        const {books} = this.props 
+        const {books, changeShelf} = this.props 
         return (
         <div className="list-books">
             <div className="list-books-title">
@@ -12,7 +12,10 @@ class AllBooks extends Component {
             </div>
             <div className="list-books-content">
             <div>
-                <BookShelf books={books}/>
+                <BookShelf 
+                books={books} 
+                changeShelf={changeShelf}
+                />
             </div>
             </div>
             <div className="open-search">

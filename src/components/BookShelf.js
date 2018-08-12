@@ -4,7 +4,7 @@ import BooksGrid from './BooksGrid'
 
 class BookShelf extends Component {
     render() {
-        const {books} = this.props
+        const {books, changeShelf} = this.props
         
         const bookShelves = [
             {shelf: 'currentlyReading', name: 'Currently Reading'},
@@ -20,7 +20,10 @@ class BookShelf extends Component {
                         <div key={shelf.shelf} className="bookshelf" >
                             <h2 className="bookshelf-title">{shelf.name}</h2>
                             <div className="bookshelf-books">
-                                <BooksGrid books={filteredBooks}/>
+                                <BooksGrid 
+                                books={filteredBooks}
+                                changeShelf={changeShelf}
+                                />
                             </div>
                         </div>
                     )

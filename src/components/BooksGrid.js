@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react'
-
+import ShelfDropdown from './ShelfDropdown'
 class BooksGrid extends Component {
     render() {
-        const {books} = this.props
+        const {books, changeShelf} = this.props
         return (
             <ol className="books-grid">
             {books.map((book) => (
@@ -11,15 +11,11 @@ class BooksGrid extends Component {
                     <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>
-                        <div className="book-shelf-changer">
-                        <select>
-                            <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
-                        </div>
+                        <ShelfDropdown 
+                        book={ book }
+                        books={ books }
+                        changeShelf={changeShelf }
+                        />
                     </div>
                     <div className="book-title">{book.title}</div>
                     {book.authors.length > 1 && 
