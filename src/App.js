@@ -7,7 +7,8 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    found: []
   };
 
   componentDidMount() {
@@ -20,11 +21,20 @@ class BooksApp extends React.Component {
   }
 
   getAllBooks = () => {
-    BooksAPI.getAll().then(books => this.setState({ books }))
+    BooksAPI.getAll().then(books => this.setState({ books: books }))
   }
-  // searchBook(book) {
-  //   BooksAPI.search(book).then()
-  // }
+  searchBook = (query) => {
+      BooksAPI.search(query).then((res) => {
+          if(res){
+              console.log(res)
+              this.setState({
+                  found: res
+              });
+          }
+
+      });
+      
+  } 
   render() {
     return (
       <div className="app">
@@ -34,7 +44,14 @@ class BooksApp extends React.Component {
           changeShelf={this.changeShelf}
         />
       )}/>
-      <Route path='/search' component={SearchBook}/>
+      <Route path='/search' 
+        render= {() => (<SearchBook
+        
+        searchBook={this.searchBook}
+        result={this.state.found}
+        changeShelf={this.changeShelf}
+        />)}
+      />
       </div>
     )
   }
