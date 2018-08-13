@@ -11,7 +11,6 @@ class BookShelf extends Component {
             {shelf: 'wantToRead', name: 'Want To Read'},
             {shelf: 'read', name: 'Read'}
         ]
-        console.log(books)
         return (
             <div>
                 {bookShelves.map((shelf, index) => {

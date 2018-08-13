@@ -4,11 +4,14 @@ import BooksGrid from './BooksGrid';
 
 class SearchBook extends Component {
     
-    updateQuery = (query) => {
-        console.log(this.props.books)
-        this.props.searchBook(query.trim());
-    };
-
+    state = {
+        query: ''
+    }
+    updQuery(query) {
+        console.log(query)
+        this.setState({query: query})
+        this.props.searchBook(query)
+    }
     render() {   
         return (
             <div>
@@ -19,21 +22,17 @@ class SearchBook extends Component {
                         <input
                                 type="text"
                                 placeholder="Search by title or author"
-                                onChange={(event) => this.updateQuery(event.target.value)}
+                                value={this.state.query}
+                                onChange={(event) => this.updQuery(event.target.value)}
                             />
                         </div>
                     </div>
                     <div className="search-books-results">
-                        <ol className="books-grid">
-                        {/* {console.log("yo",this.props.result)}
-                        {this.props.result.map((book) => (
-                            <li key={book.id} className="contact-list-item">
-                                <BooksGrid
-                                    books={book}
-                                    changeShelf={this.props.changeShelf} />
-                            </li>
-                        ))} */}
-                        </ol>
+                        {console.log("yo",this.props.result)}
+                            <BooksGrid
+                                books={this.props.result}
+                                changeShelf={this.props.changeShelf} 
+                            />
                     </div>
                 </div>
           </div>

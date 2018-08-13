@@ -12,7 +12,6 @@ class BooksApp extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this)
     this.getAllBooks()
   }
   
@@ -24,34 +23,41 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({ books: books }))
   }
   searchBook = (query) => {
+    if ( query === undefined || query === ''){
+      this.setState({ found: [] });
+      return;
+    }
       BooksAPI.search(query).then((res) => {
-          if(res){
-              console.log(res)
+          if(res) {
+            if(res.length > 0) {
               this.setState({
                   found: res
               });
+            }
           }
-
       });
       
   } 
   render() {
     return (
       <div className="app">
-      <Route exact path='/' render={() => (
-        <AllBooks
-          books={this.state.books}
-          changeShelf={this.changeShelf}
+        <Route exact path='/' 
+          render={() => (
+            <AllBooks
+              books={this.state.books}
+              changeShelf={this.changeShelf}
+            />
+          )}
         />
-      )}/>
-      <Route path='/search' 
-        render= {() => (<SearchBook
-        
-        searchBook={this.searchBook}
-        result={this.state.found}
-        changeShelf={this.changeShelf}
-        />)}
-      />
+        <Route path='/search' 
+            render= {() => (
+              <SearchBook
+                searchBook={this.searchBook}
+                result={this.state.found}
+                changeShelf={this.changeShelf}
+              />
+            )}
+        />
       </div>
     )
   }

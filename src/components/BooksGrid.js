@@ -4,6 +4,7 @@ import ShelfDropdown from './ShelfDropdown'
 class BooksGrid extends Component {
     render() {
         const {books, changeShelf} = this.props
+        console.log("books",books)
         return (
             <ol className="books-grid">
             {books.map((book) => (
@@ -18,12 +19,12 @@ class BooksGrid extends Component {
                         />
                     </div>
                     <div className="book-title">{book.title}</div>
-                    {book.authors.length > 1 && 
-                        (book.authors.map((author,index) => (
+                    {book.authors !== undefined && book.authors.length > 1 && 
+                        (book.authors.map((author) => (
                             <div key={author} className="book-authors">{author}</div>
                         )))
                     }
-                    {book.authors.length === 1 && (<div className="book-authors">{book.authors[0]}</div>)}
+                    {book.authors !== undefined && book.authors.length === 1 && (<div className="book-authors">{book.authors[0]}</div>)}
                     </div>
                 </li>
             ))}
