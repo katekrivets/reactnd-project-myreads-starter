@@ -10,11 +10,13 @@ class BooksGrid extends Component {
                 <li key={book.id}>
                     <div className="book">
                     <div className="book-top">
-                        <div className="book-cover" alt={`${book.title}`} style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks?book.imageLinks.thumbnail:''}")` }}></div>
+                        <div className="book-cover" alt={`${book.title}`} 
+                            style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks?book.imageLinks.thumbnail:''}")` }}>
+                        </div>
                         <ShelfDropdown 
-                        book={ book }
-                        books={ books }
-                        changeShelf={changeShelf }
+                            book={ book }
+                            books={ books }
+                            changeShelf={changeShelf }
                         />
                     </div>
                     <div className="book-title">{book.title}</div>

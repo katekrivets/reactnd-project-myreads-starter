@@ -16,11 +16,16 @@ class BooksApp extends React.Component {
   }
   
   changeShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(this.getAllBooks)
+    BooksAPI.update(book, shelf).then(() => {
+      book.shelf = shelf
+      this.setState(state => ({
+        books: state.books.filter(b => b.id !== book.id).concat(book)
+      }))
+    })
   }
 
   getAllBooks = () => {
-    BooksAPI.getAll().then(books => this.setState({ books: books }))
+    BooksAPI.getAll().then(books => this.setState({ books }))
   }
   searchBook = (query) => {
     if ( query === undefined || query === ''){

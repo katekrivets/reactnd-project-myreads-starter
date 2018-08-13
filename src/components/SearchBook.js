@@ -27,7 +27,6 @@ class SearchBook extends Component {
                         </div>
                     </div>
                     <div className="search-books-results">
-                        {console.log("yo",this.props.result)}
                             <BooksGrid
                                 books={this.props.result}
                                 changeShelf={this.props.changeShelf} 
