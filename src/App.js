@@ -29,10 +29,10 @@ class BooksApp extends React.Component {
     }
       BooksAPI.search(query).then((res) => {
           if(res) {
-            if(res.length > 0) {
-              this.setState({
-                  found: res
-              });
+            if (res.constructor === Array) {  
+              this.setState({ found: res });
+            } else {
+              this.setState({ found: [] });
             }
           }
       });

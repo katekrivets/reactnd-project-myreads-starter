@@ -9,7 +9,7 @@ class SearchBook extends Component {
     }
     updQuery(query) {
         console.log(query)
-        this.setState({query: query})
+        //this.setState({query: query})
         this.props.searchBook(query)
     }
     render() {   
@@ -20,11 +20,10 @@ class SearchBook extends Component {
                     <Link to='/' className="close-search">Close</Link>
                         <div className="search-books-input-wrapper">
                         <input
-                                type="text"
-                                placeholder="Search by title or author"
-                                value={this.state.query}
-                                onChange={(event) => this.updQuery(event.target.value)}
-                            />
+                            type="text"
+                            placeholder="Search by title or author"
+                            onChange={(event) => this.updQuery(event.target.value)}
+                        />
                         </div>
                     </div>
                     <div className="search-books-results">
