@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
     found: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.getAllBooks()
   }
   
@@ -34,7 +34,7 @@ class BooksApp extends React.Component {
     }
       BooksAPI.search(query).then((res) => {
           if(res) {
-            if (res.constructor === Array) {  
+            if (res.constructor === Array) {
               this.setState({ found: res });
             } else {
               this.setState({ found: [] });
@@ -58,6 +58,7 @@ class BooksApp extends React.Component {
             render= {() => (
               <SearchBook
                 searchBook={this.searchBook}
+                allbooks={this.state.books}
                 result={this.state.found}
                 changeShelf={this.changeShelf}
               />

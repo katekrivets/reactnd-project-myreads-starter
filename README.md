@@ -2,8 +2,8 @@
 
 Project was created with starter pack based on create react app.
 To launch it locally clone repo
-* npm install
-* npm run
+* `npm install`
+* `npm start`
 
 ## Backend Server
 

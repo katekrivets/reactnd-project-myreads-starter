@@ -8,8 +8,6 @@ class SearchBook extends Component {
         query: ''
     }
     updQuery(query) {
-        console.log(query)
-        //this.setState({query: query})
         this.props.searchBook(query)
     }
     render() {   
@@ -28,6 +26,7 @@ class SearchBook extends Component {
                     </div>
                     <div className="search-books-results">
                             <BooksGrid
+                                allbooks={this.props.allbooks}
                                 books={this.props.result}
                                 changeShelf={this.props.changeShelf} 
                             />

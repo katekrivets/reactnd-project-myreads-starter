@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import ShelfDropdown from './ShelfDropdown'
 class BooksGrid extends Component {
     render() {
-        const {books, changeShelf} = this.props
+        const {books,allbooks, changeShelf} = this.props
         return (
             <ol className="books-grid">
             {books.map((book) => (
@@ -11,12 +11,13 @@ class BooksGrid extends Component {
                     <div className="book">
                     <div className="book-top">
                         <div className="book-cover" alt={`${book.title}`} 
-                            style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks?book.imageLinks.thumbnail:''}")` }}>
+                            style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks?book.imageLinks.thumbnail:'http://via.placeholder.com/128x193?text=No%20Cover'}")` }}>
                         </div>
                         <ShelfDropdown 
                             book={ book }
                             books={ books }
-                            changeShelf={changeShelf }
+                            allbooks={ allbooks }
+                            changeShelf={ changeShelf }
                         />
                     </div>
                     <div className="book-title">{book.title}</div>

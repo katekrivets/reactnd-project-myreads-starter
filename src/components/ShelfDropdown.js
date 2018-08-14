@@ -3,17 +3,18 @@ import React, { Component } from 'react'
 class ShelfChanger extends Component {
 
   render() {
-    const { book, books, changeShelf } = this.props
+    const { book, books, allbooks, changeShelf } = this.props
     
     let currentShelf = 'none'
-
-    for (let item of books ) {
+    let [...arr] = books
+    
+    if(allbooks) {
+      arr = allbooks
+    }
+    for (let item of arr ) {
       if (item.id === book.id)  {
         currentShelf = item.shelf
-        if(typeof currentShelf === "undefined" ){
-          currentShelf = 'none'
-        }
-      } 
+      }
     }
     console.log("SHELF",books)
     return (
